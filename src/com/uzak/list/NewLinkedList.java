@@ -1,5 +1,6 @@
 package com.uzak.list;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -8,7 +9,7 @@ import java.util.NoSuchElementException;
  * <p>
  * Created by liangxiudou on 2018/8/19.
  */
-public class NewLinkedList<E> extends List<E> {
+public class NewLinkedList<E> implements List<E>, Iterable<E>, Serializable {
     private Node head;
     private Node foot;
     private int size;
@@ -26,9 +27,8 @@ public class NewLinkedList<E> extends List<E> {
         this.head = new Node(null, null, null);
         this.foot = new Node(null, null, null);
         clear();
-        Iterator i = list.iterator();
-        while (i.hasNext()) {
-            add((E) i.next());
+        for (int i = 0; i < list.size(); i++) {
+            add((E) list.get(i));
         }
     }
 
@@ -328,7 +328,7 @@ public class NewLinkedList<E> extends List<E> {
      * 链表栈
      * (new NewArrayList()).new ArrayStack()
      */
-    public class LinkedStack extends Stack<E> {
+    public class LinkedStack implements Stack<E> {
         @Override
         public void push(E e) {
             add(e);
@@ -359,7 +359,7 @@ public class NewLinkedList<E> extends List<E> {
      * 链表队列
      * (new NewArrayList()).new ArrayStack()
      */
-    public class LinkedQueue extends Queue<E> {
+    public class LinkedQueue implements Queue<E> {
         @Override
         public void enqueue(E e) {
             add(e);

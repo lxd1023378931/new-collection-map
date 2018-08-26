@@ -1,5 +1,7 @@
 package com.uzak.list;
 
+import java.io.Serializable;
+import java.util.AbstractList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -7,7 +9,7 @@ import java.util.NoSuchElementException;
  * 自定义数组集合
  * Created by liangxiudou on 2018/8/19.
  */
-public class NewArrayList<E> extends List<E> {
+public class NewArrayList<E> implements List<E>, Iterable<E>, Serializable {
     /**
      * 默认扩展大小
      */
@@ -273,7 +275,7 @@ public class NewArrayList<E> extends List<E> {
      * 数组栈
      * (new NewArrayList()).new ArrayStack()
      */
-    public class ArrayStack extends Stack<E> {
+    public class ArrayStack implements Stack<E> {
         @Override
         public void push(E e) {
             add(e);
@@ -304,7 +306,7 @@ public class NewArrayList<E> extends List<E> {
      * 数组队列
      * (new NewArrayList()).new ArrayStack()
      */
-    public class ArrayQueue extends Queue<E> {
+    public class ArrayQueue implements Queue<E> {
         @Override
         public void enqueue(E e) {
             add(e);
